@@ -7,6 +7,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 const config: webpack.Configuration = merge({
     mode: 'development',
+    devtool: 'source-map',
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".mjs", ".cjs", ".json", ".wasm"],
     },
