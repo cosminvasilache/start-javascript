@@ -1,4 +1,4 @@
 # https://docs.github.com/en/github/using-git/configuring-git-to-handle-line-endings
 
 # Enforce LF line endings
-* text eol=lf
+* text=auto eol=lf
