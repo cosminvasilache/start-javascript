@@ -1,3 +1,3 @@
-# JavaScript starter configuration
+# TypeScript starter configuration
 
 Boilerplate code to test front-end concepts.
