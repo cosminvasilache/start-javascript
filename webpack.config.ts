@@ -14,7 +14,7 @@ const config: webpack.Configuration = merge({
         main: './src/main.ts',
     },
     output: {
-        filename: '[name].[contentHash].bundle.js',
+        filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
     module: {
@@ -43,7 +43,7 @@ const config: webpack.Configuration = merge({
             minify: {},
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contentHash].css',
+            filename: '[name].[contenthash].css',
         }),
         new CleanWebpackPlugin(),
     ],
