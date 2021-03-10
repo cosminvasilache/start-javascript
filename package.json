@@ -4,8 +4,8 @@
   "description": "Typescript boilerplate starter project.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --config webpack.config.ts --open",
-    "build": "webpack --config webpack.config.ts",
+    "start": "webpack serve --config webpack.config.ts --open --env dev",
+    "build": "webpack --config webpack.config.ts --env prod",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=\"jasmine.json\""
   },
   "author": "Cosmin Vasilache",
