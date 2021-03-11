@@ -7,13 +7,13 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 interface Environment {
+    prod: boolean,
     dev: boolean,
     analyze: boolean,
 }
 
 const baseWebpackConfig: webpack.Configuration = {
-    mode: 'development',
-    devtool: 'source-map',
+    mode: 'production',
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".mjs", ".cjs", ".json", ".wasm"],
     },
@@ -56,6 +56,18 @@ const baseWebpackConfig: webpack.Configuration = {
     ],
 };
 
+const prodWebpackConfig: webpack.Configuration = {
+   mode: 'production',
+};
+
+const devWebpackConfig: webpack.Configuration = {
+    mode: 'development',
+    devtool: 'source-map',
+    devServer: {
+        open: true,
+    },
+};
+
 const analyzeWebpackConfig: webpack.Configuration = {
     plugins: [
         new BundleAnalyzerPlugin({
@@ -68,6 +80,14 @@ function createConfig(env: Environment) {
     console.log('ENVIRONMENT:', env);
 
     let outputWebpackConfig: webpack.Configuration = baseWebpackConfig;
+
+    if (env.prod) {
+        outputWebpackConfig = merge(outputWebpackConfig, prodWebpackConfig);
+    }
+
+    if (env.dev) {
+        outputWebpackConfig = merge(outputWebpackConfig, devWebpackConfig);
+    }
 
     if (env.analyze) {
         outputWebpackConfig = merge(outputWebpackConfig, analyzeWebpackConfig);
